@@ -1,0 +1,38 @@
+<div class="baner" *ngIf="movieObject"
+[style.backgroundImage]="'linear-gradient(45deg, black, transparent),url(https://image.tmdb.org/t/p/original/'+movieObject.poster_path+')'">
+
+
+<div class="caption">
+    <h3>{{movieObject.title || movieObject.original_title}}</h3>
+</div>
+</div>
+
+
+
+
+<div class="trailer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <mat-tab-group>
+                    <mat-tab label="overview">
+                     
+                            <app-overview [movie]="movieObject"></app-overview>
+                       
+                         </mat-tab>
+                    <mat-tab label="video"> 
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 mb-2" *ngFor="let movie of movietrailer">
+                                    <app-embedvideo [key]="movie.key" ></app-embedvideo>
+                                </div>
+                            </div>
+                        </div>
+                      
+                         </mat-tab>
+                    <mat-tab label="photo"> Content 3 </mat-tab>
+                  </mat-tab-group>
+            </div>
+        </div>
+    </div>
+</div>
